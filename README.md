@@ -20,3 +20,27 @@ deactivate
 cd /ml-fast-api
 pip freeze > requirements.txt
 ```
+
+# ecrへのpush
+参照リンク https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/docker-push-ecr-image.html
+
+## image参照
+```shell
+$ docker images
+```
+
+## imageがなければbuild
+```shell
+$ cd docker
+$ docker build -t kokishin-fast-api-image -f ./Dockerfile  ..
+```
+
+## tagつける
+```shell
+$ docker tag <image id> 590183790791.dkr.ecr.ap-northeast-1.amazonaws.com/kokishin-fast-api:latest
+```
+
+## pushする
+```shell
+$ docker push 590183790791.dkr.ecr.ap-northeast-1.amazonaws.com/kokishin-fast-api:latest
+```

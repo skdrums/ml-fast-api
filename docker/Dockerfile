@@ -5,4 +5,4 @@ FROM tiangolo/uvicorn-gunicorn-fastapi:python3.11
 #RUN --mount=type=cache,target=/root/.cache/pip \
 #    pip install -r requirements.txt
 WORKDIR /app
-COPY ../src /app
+COPY src app

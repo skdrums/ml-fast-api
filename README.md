@@ -24,6 +24,11 @@ pip freeze > requirements.txt
 # ecrへのpush
 参照リンク https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/docker-push-ecr-image.html
 
+ECR認証
+```shell
+$ aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin 590183790791.dkr.ecr.ap-northeast-1.amazonaws.com
+```
+
 ## image参照
 ```shell
 $ docker images

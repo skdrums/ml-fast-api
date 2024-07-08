@@ -1,4 +1,4 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.11
+FROM --platform=linux/x86_64 tiangolo/uvicorn-gunicorn-fastapi:python3.11
 
 # requirementsのinstall
 #COPY requirements.txt ./

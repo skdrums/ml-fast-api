@@ -1,12 +1,12 @@
 FROM --platform=linux/x86_64 tiangolo/uvicorn-gunicorn-fastapi:python3.11
 
-# # requirementsのinstall
-COPY ../requirements.txt requirements.txt
-RUN pip install -r requirements.txt
-
+ENV LANG C.UTF-8
+ENV PYTHONPATH /src:/app
 
 WORKDIR /app
-COPY src app
+COPY ./requirements.txt /app/
+RUN pip install -r requirements.txt
+COPY src/ /app/
 #
 # FROM --platform=linux/x86_64 tiangolo/uvicorn-gunicorn-fastapi:python3.11
 # USER root

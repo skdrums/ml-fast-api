@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-import logging
+from util.logger import info
 from fastapi.middleware.cors import CORSMiddleware
+import datetime
+import sys
 # from infer.detection.exec import text
 
-logging.basicConfig(level=logging.INFO)
-_logger = logging.getLogger('sample_logger')
 app = FastAPI()
 
 origins = [
@@ -29,6 +29,8 @@ class Item(BaseModel):
 
 @app.get("/")
 def read_root():
+    now = datetime.datetime.now()
+    message = "sk root get log"
     return {"Hello": "hogehoge"}
 
 @app.get("/items/{item_id}")
@@ -43,5 +45,6 @@ def put_item(item_id: int, item: Item):
 
 @app.get("/healthcheck")
 def healthcheck():
-    _logger.info('[%s] %s' % (current_datetime(), message))
+    message = "sk healthcheck"
+    info(message)
     return {"message": "sk healthcheck"}
